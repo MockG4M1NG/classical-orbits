@@ -28,6 +28,7 @@ while time < runtime:
     pos, vel, time = position_verlet(pos, vel, time, res, True)
     f.write(f'{pos[0]} {pos[1]}\n')
 f.write(f'\n\n')
+print("Scenario 1a Complete")
 
 # SCENARIO 1b: Choose binary stars to be stationary for all time (initial velocity 2)
 time = 0
@@ -39,6 +40,7 @@ while time < runtime:
     pos, vel, time = position_verlet(pos, vel, time, res, True)
     f.write(f'{pos[0]} {pos[1]}\n')
 f.write(f'\n\n')
+print("Scenario 1b Complete")
 
 # SCENARIO 1c: Choose binary stars to be stationary for all time (initial velocity 3)
 time = 0
@@ -51,8 +53,11 @@ while time < runtime:
     f.write(f'{pos[0]} {pos[1]}\n')
 f.close()
 
+print("Scenario 1c Complete")
 # SCENARIO 2a: Choose binary stars to circle the origin (w/ Jacobi constant error comparison)
 # Algorithm: Position-Verlet
+runtime = 3 * m.pi
+res = 0.005
 time = 0
 pos = [0.0, 0.058]
 vel = [0.49, 0]
@@ -69,6 +74,7 @@ while time < runtime:
     f1.write(f'{time} {c_jacobi(pos, vel, time) - jac0}\n')
 f.write(f'\n\n')
 f1.write(f'\n\n')
+print("Scenario 2a Complete")
 
 # SCENARIO 2b
 # Algorithm: Forest-Ruth
@@ -86,6 +92,7 @@ while time < runtime:
     f1.write(f'{time} {c_jacobi(pos, vel, time) - jac0}\n')
 f.close()
 f1.close()
+print("Scenario 2b Complete")
 
 # SCENARIO 3a: Choose binary stars to circle the origin and rotate coordinate system with stars (set one)
 # Algorithm: Forest-Ruth
@@ -100,6 +107,7 @@ while time < runtime:
     plot = r_pos(pos, time)
     f.write(f'{plot[0]} {plot[1]}\n')
 f.write(f'\n\n')
+print("Scenario 3a Complete")
 
 # SCENARIO 3b: Choose binary stars to circle the origin and rotate coordinate system with stars (set two)
 time = 0
@@ -112,4 +120,5 @@ while time < runtime:
     plot = r_pos(pos, time)
     f.write(f'{plot[0]} {plot[1]}\n')
 f.close()
+print("Scenario 3b Complete")
 
