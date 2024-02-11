@@ -7,9 +7,9 @@ Vector: TypeAlias = list[float]
 
 
 def c_orbit(r: Vector, t: float, fixed: bool = False) -> tuple[Vector, Vector]:
-    if fixed:
-        return np.subtract(r, [0.5, 0.0]), np.subtract(r, [0.5, 0.0])
-    return np.subtract(r, [0.5 * m.cos(t), 0.5 * m.sin(t)]), np.add(r, [0.5 * m.cos(t), 0.5 * m.sin(t)])
+    if not fixed:
+        return np.subtract(r, [-0.5 * m.cos(t), -0.5 * m.sin(t)]), np.subtract(r, [0.5 * m.cos(t), 0.5 * m.sin(t)])
+    return np.subtract(r, [-0.5, 0.0]), np.subtract(r, [0.5, 0.0])
 
 
 def c_accel(r: Vector, t: float, fixed: bool = False) -> Vector:
@@ -22,7 +22,7 @@ def u_pos(r: Vector, v: Vector, t: float, t_step: float) -> tuple[Vector, float]
 
 
 def u_vel(r: Vector, v: Vector, t: float, t_step: float, fixed: bool = False) -> tuple[Vector, float]:
-    return np.add(v, np.multiply(c_accel(r, t, fixed), t_step)), t + t_step
+    return np.add(v, np.multiply(c_accel(r, t, fixed), t_step)), t
 
 
 def r_pos(r: Vector, t: float) -> Vector:
